@@ -35,25 +35,24 @@ pip3 install dbt-core dbt-snowflake dbt-bigquery
 
 3. store credentials and secrets in the environment by adding the following to your `./venv/bin/activate` file
 
-Snowflake:
-```
+### Snowflake:
+
+```bash
 export SNOWFLAKE_USER=<your_snowflake_user>
 export SNOWFLAKE_PASSWORD=<your_snowflake_password>
 export SNOWFLAKE_ACCOUNT=<your_snowflake_account>
 ```
-BigQuery:
+### BigQuery:
 
-```
+```bash
 export BIGQUERY_PROJECT=<your_bigquery_project_id>
 ```
 
 4. Setup your profile and project file
 
-Snowflake
+### Snowflake
 
 For more, consult the [dbt docs](https://docs.getdbt.com/reference/warehouse-profiles/snowflake-profile)
-
-```
 
 ```yaml
 sf_project_name:
@@ -72,7 +71,7 @@ sf_project_name:
   target: dev
 ```
 
-BigQuery
+### BigQuery
 
 For more consult the [dbt docs](https://docs.getdbt.com/reference/warehouse-profiles/bigquery-profile)
 
@@ -94,7 +93,7 @@ bq_project_name:
 
 5. Check your connections
 
-```
+```bash
 dbt debug
 ```
 ## Dev Tools
