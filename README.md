@@ -5,18 +5,26 @@ dbt best practices and standards used in the AXE team at Hiflylabs.
 
 # Table of Contents
 1. [Onboarding](#onboarding)
+    - [Greenfield](#greenfield)
+    - [Brownfield](#brownfield)
 2. [Dev Tools](#dev-tools)
 3. [Branching](#branching)
 4. [Pre-commit](#pre-commit)
-    - [SQLFluff](#sqlfluff)
-    - [YAML Check](#yaml-check)
+    - [Installation](#installation)
+    - [Configuration](#configuration)
+    - [Initialization](#initialization)
 5. [CI Pipeline](#ci-pipeline)
-6. [Deployment](#deployment)
+    - [Standard Approach](#standard-approach)
+    - [ZCC CI](#zcc-ci)
+6. [Troubleshooting](#troubleshooting)
+    - [Store Test Failures](#store-test-failures)
+    - [dbt-osmosis](#dbt-osmosis)
+7. [Deployment](#deployment)
     - [Snowflake](#snowflake)
     - [BigQuery](#bigquery)
-7. [Testing](#testing)
-8. [dbt Cloud](#dbt-cloud)
-9. [Cost Monitoring](#cost-monitoring)
+8. [Testing](#testing)
+9. [dbt Cloud](#dbt-cloud)
+10. [Cost Monitoring](#cost-monitoring)
 
 
 ## Onboarding
@@ -176,19 +184,21 @@ For a further staging layer, please consult [this](https://docs.getdbt.com/blog/
 
 ## Pre-commit
 
-**Install pre-commit**
+### Installation
 
 ```bash
 pip3 install pre-commit
 ```
-
-**Add YAML**
 
 We are mainly using the following three repos:
 - [Pre-commit hooks](https://github.com/pre-commit/pre-commit-hooks)
 - [SQLFluff](https://docs.sqlfluff.com/en/stable/production.html)
 - [pre-commmit-dbt](https://github.com/offbi/pre-commit-dbt)
 
+
+### Configuration
+
+Add to `.pre-commit-config.yaml`
 
 ```yaml
 repos:
@@ -223,13 +233,119 @@ repos:
       files: 'models/'
       additional_dependencies: ['dbt-snowflake==1.2.0', 'sqlfluff-templater-dbt']
 ```
-**Load git hooks**
+### Initialization
 
 ```bash
 pre-commit install
 ```
 
 ## CI Pipeline
+
+### Standard Approach
+
+To setup a the Github integration, you have to have an admin account on the Github repository. This is because you need to add a webhook to the repository. This webhook will trigger the CI pipeline when a new commit is pushed to the repository.
+
+Find the official documentation [here](https://docs.getdbt.com/docs/dbt-cloud/using-dbt-cloud/cloud-enabling-continuous-integration)
+
+### ZCC CI
+
+The zero-copy-clone CI creates a mirror environment of the target database and builds the models in that environment, ensuring that all tables are available in the environment.
+
+Original idea from [here](https://medium.com/airtribe/test-sql-pipelines-against-production-clones-using-dbt-and-snowflake-2f8293722dd4)
+
+```sql
+{% macro clone_prod_update_permissions(db, clone_db, role, schemas_to_clone) -%}
+
+    {{ log("Cloning database " ~ db ~ " to " ~ clone_db, info=True) }}
+
+    {{ log("The following schemas will be cloned: " ~ schemas_to_clone, info=True)}}
+
+    {% call statement(name, fetch_result=True) %}
+
+        DROP DATABASE IF EXISTS {{clone_db}};
+        CREATE DATABASE {{clone_db}};
+        {% for schema_name in schemas_to_clone %}
+            {% if '_' in schema_name %}
+                {% set custom = schema_name.split('_')[1] %}
+                create schema {{target.schema}}_{{custom}} clone {{db}}.{{schema_name}};
+            {% else %}
+                create schema {{target.schema}} clone {{db}}.{{schema_name}};
+            {% endif %}
+        {% endfor %}
+        GRANT ALL ON DATABASE {{clone_db}} TO ROLE {{role}};
+
+        {# grant access for debugging #}
+        GRANT USAGE ON DATABASE {{clone_db}} TO ROLE TRANSFORMER;
+
+    {% endcall %}
+
+    {{ log("Database cloning completed!", info=True) }}
+
+{%- endmacro %}
+
+{% macro pr_clone_pre_hook() %}
+
+    {% if target.name == "thrive_dev_pr" %}
+
+        {# If it is a PR from the feature bracnh against development, then clone the ANALYTICS_DEV #}
+         {{ clone_prod_update_permissions(var('dev_db'), var('development_clone_db'), var('clone_role'), var('schemas_to_clone')) }}
+
+    {% elif target.name == "thrive_prod_pr" %}
+
+        {# If it is a PR from the development against main, then clone the ANALYTICS_PROD #}
+        {{ clone_prod_update_permissions(var('prod_db'), var('production_clone_db'), var('clone_role'), var('schemas_to_clone')) }}
+
+    {% else %}
+
+        {{ log(target.name ~" is not meant to be used for PR testing", info=True) }}
+
+    {% endif %}
+  
+{% endmacro %}
+```
+
+Add these to your `dbt_project.yml` file
+
+```yaml
+vars:
+# Databases
+  "dev_db" : "ANALYTICS_DEV"
+  "prod_db" : "ANALYTICS_PROD"
+  "production_clone_db" : "ANALYTICS_PROD_CLONE"
+  "development_clone_db" : "ANALYTICS_DEV_CLONE"
+  # Roles
+  "clone_role" : "SYSADMIN"
+  # Schemas to clone
+  "schemas_to_clone" : ["ANALYTICS", "ANALYTICS_STAGING", "ANALYTICS_SEED", "ANALYTICS_RAW_SAMPLE"]
+```
+
+>N.B. Note that this can cause discrepancies if you run multiple PR as they can overwrite each other. This is why we recommend to test PRs one by one with this solution. The future implementation would create custom clone databases for each PR.
+
+## Troubleshooting
+
+### Store Test Failures
+
+We are able to write test failures and warnings directly into our datawarehouse. It helps in identifying records responisble for the anomaly.
+
+Add to `dbt_project.yml`
+
+```yaml
+tests:
+  +store_failures: true
+```
+
+todo: gif here
+
+For more check out the official [documentation](https://docs.getdbt.com/reference/resource-configs/store_failures)
+
+### dbt-osmosis
+
+This is a must have to preview model excerpts and test out blocks of a complex logic causing a test to fail or wrong data in the output.
+
+Repo [here](https://github.com/z3z1ma/dbt-osmosis)
+
+todo: gif here
+
 ## Deployment
 ### Snowflake
 ### BigQuery
