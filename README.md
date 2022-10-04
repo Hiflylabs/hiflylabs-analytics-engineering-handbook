@@ -29,11 +29,24 @@ dbt best practices and standards used in the AXE team at Hiflylabs.
 python3 -m venv venv
 source venv/bin/activate
 ```
+> Make sure you add `venv` to `.gitignore` 
 
 2. Install dbt dependencies
 
 ```bash
 pip3 install dbt-core dbt-snowflake dbt-bigquery
+```
+
+Add `requirements.txt`
+
+```bash
+dbt-core==1.2.0
+dbt-snowflake==1.2.0
+dbt-bigquery==1.2.0
+pre-commit==2.19.0
+sqlfluff==1.2.0
+sqlfluff-templater-dbt==1.2.0
+dbt-osmosis
 ```
 
 3. Initialize dbt project
@@ -151,9 +164,9 @@ Make sure you check in the util readme if you need to configure IDE settings to 
 
 - [vscode-dbt](https://marketplace.visualstudio.com/items?itemName=analyst-snowflake.vscode-dbt)
 - [dbt Power User](https://marketplace.visualstudio.com/items?itemName=analyst-collective.dbt-power-user)
+- [dbt-osmosis](https://github.com/z3z1ma/dbt-osmosis)
 - [CSV Viewer tool](https://marketplace.visualstudio.com/items?itemName=mechatroner.rainbow-csv)
 - [GitLens](https://marketplace.visualstudio.com/items?itemName=eamodio.gitlens)
-
 
 ## Branching
 ## Pre-commit
