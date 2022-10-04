@@ -21,16 +21,63 @@ dbt best practices and standards used in the AXE team at Hiflylabs.
 
 ## Onboarding
 
+### Greenfield
+
 1. Make sure that you use a virtual environment to make it easier navigating between projects with different dependencies
 
-```
+```bash
 python3 -m venv venv
 source venv/bin/activate
 ```
 
 2. Install dbt dependencies
-```
+
+```bash
 pip3 install dbt-core dbt-snowflake dbt-bigquery
+```
+
+3. Initialize dbt project
+
+```
+dbt init <project_name>
+```
+
+### Brownfield
+
+**Mach Speed: Copy-Edit-Paste**
+
+> Prerequisities: Python >= 3.5
+
+*In case the project is not brownfield and you have already a repo and dependency*
+
+Mac/Linux
+
+```bash
+git clone https://github.com/<org>/<repo>.git
+cd <repo>
+python3 -m venv venv
+source venv/bin/activate
+python3 -m pip install --upgrade pip
+python3 -m pip install -r requirements.txt
+source venv/bin/activate
+dbt build
+dbt docs generate
+dbt docs serve
+```
+
+Windows
+
+```bash
+git clone https://github.com/<org>/<repo>.git
+cd <repo>
+python -m venv venv
+venv\Scripts\Activate.ps1
+python -m pip install --upgrade pip
+python -m pip install -r requirements.txt
+venv\Scripts\Activate.ps1
+dbt build
+dbt docs generate
+dbt docs serve
 ```
 
 3. store credentials and secrets in the environment by adding the following to your `./venv/bin/activate` file
