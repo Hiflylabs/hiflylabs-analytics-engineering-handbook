@@ -21,7 +21,11 @@ dbt best practices and standards used in the AXE team at Hiflylabs.
     - [dbt-osmosis](#dbt-osmosis)
 7. [Deployment](#deployment)
     - [Snowflake](#snowflake)
+        - [Blue/green deployment](#bluegreen-deployment)
     - [BigQuery](#bigquery)
+        - [WAP](#wap-write-audit-publish)
+        - [WAC](#wac-write-audit-clone)
+    - [Mirror layer](#mirror-layer)
 8. [Testing](#testing)
 9. [dbt Cloud](#dbt-cloud)
 10. [Cost Monitoring](#cost-monitoring)
@@ -376,7 +380,10 @@ This is a classical approach mentioned by the deck linked above.
 2. Then, build only top level models under the activation (BI) layer in prod again.
 3. Traffic is stopped if the build failed in the audit environment.
 
-![bigquery_wap](misc/bigquery_wap.drawio.svg)
+<p align="center">
+<img src="misc/bigquery_wap.drawio.svg">
+</p>
+
 
 Here's the macro to implement it:
 
@@ -430,7 +437,9 @@ One thing which helps us move forward is that BigQuery also has now a Table Clon
 
 What we can do is to use the production job to load to the data to a new dataset e.g. `analytics_stage` and clone the top-level tables with the `mart` tag to `analytics_prod`.
 
-![bigquery_wap](misc/bigquery_wac.drawio.svg)
+<p align="center">
+<img src="misc/bigquery_wac.drawio.svg">
+</p>
 
 >Please do review the code below before copy-pasting as it can be specific to a use-case!
 
