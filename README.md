@@ -6,7 +6,7 @@ dbt best practices and standards used in the AXE team at Hiflylabs.
 # Table of Contents
 1. [Onboarding](/sections/onboarding.md)
 2. [Dev Tools](/sections/dev_tools.md)
-3. [Branching](/sections/dev_tools.md)
+3. [Branching](/sections/branching.md)
 4. [Pre-commit](/sections/pre_commit.md)
 5. [CI/CD](/sections/cicd.md)
 6. [Troubleshooting](/sections/troubleshooting.md)
