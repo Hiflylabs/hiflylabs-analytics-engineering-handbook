@@ -20,7 +20,7 @@ There are many ways to install Python on a Mac. We recommend using [Homebrew](h
 8. Activate the virtual environment: `source .venv/bin/activate`
 
 Windows:
-
+0. CLI Based installer for Git, Python dbt, VS-Code: [https://github.com/Hiflylabs/dbt-develop-install](https://github.com/Hiflylabs/dbt-develop-install)
 1. Install Python 3.10: [https://www.python.org/downloads/release/python-3106/](https://www.python.org/downloads/release/python-3106/)
 2. Install Virtualenv: `python -m pip install virtualenv`
 3. Go to the directory where you store your codebases. If you don't have any, we recommend creating a `C:\Users\YourName\dbt_projects\` directory.
