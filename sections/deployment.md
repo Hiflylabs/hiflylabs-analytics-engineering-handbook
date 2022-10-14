@@ -88,7 +88,7 @@ What we can do is to use the production job to load to the data to a new dataset
 
 >Please do review the code below before copy-pasting as it can be specific to a use-case!
 
-```
+```sql
 {% macro has_intersect(set1, set2) %}
 
     --check if the two sets have intersection
@@ -180,7 +180,7 @@ What we can do is to use the production job to load to the data to a new dataset
 1. builds all in the staging (pre-prod) dataset
 2. copies all tables over to prod with the macro
 
-```
+```bash
 #build it in analytics_staging
 dbt seed
 dbt run

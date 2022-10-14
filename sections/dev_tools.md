@@ -29,7 +29,7 @@ The following will remap Markdown, Yaml and SQL files to use the Jinja-flavoured
 
 The following will configure Related Files rules for raw / compiled models:
 
-```
+```json
 "findrelated.rulesets": [
         {
             "name": "sql",
@@ -59,7 +59,7 @@ The following will configure Related Files rules for raw / compiled models:
 
 The following will configure spacing/indentation rules to follow the style guide:
 
-```
+```json
     "[yaml]": {
         "editor.insertSpaces": true,
         "editor.tabSize": 2
@@ -84,9 +84,7 @@ The following will configure spacing/indentation rules to follow the style guide
 
 ## dbt packages
 
-- [dbt-codegen](
-
-
+- [dbt-codegen](https://github.com/dbt-labs/dbt-codegen)
 ## pip modules
 
 - [dbt-osmosis](https://github.com/z3z1ma/dbt-osmosis)
