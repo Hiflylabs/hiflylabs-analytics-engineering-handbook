@@ -44,12 +44,12 @@ Original idea from [here](https://medium.com/airtribe/test-sql-pipelines-against
 
 {% macro pr_clone_pre_hook() %}
 
-    {% if target.name == "thrive_dev_pr" %}
+    {% if target.name == "dev_pr" %}
 
         {# If it is a PR from the feature bracnh against development, then clone the ANALYTICS_DEV #}
          {{ clone_prod_update_permissions(var('dev_db'), var('development_clone_db'), var('clone_role'), var('schemas_to_clone')) }}
 
-    {% elif target.name == "thrive_prod_pr" %}
+    {% elif target.name == "prod_pr" %}
 
         {# If it is a PR from the development against main, then clone the ANALYTICS_PROD #}
         {{ clone_prod_update_permissions(var('prod_db'), var('production_clone_db'), var('clone_role'), var('schemas_to_clone')) }}

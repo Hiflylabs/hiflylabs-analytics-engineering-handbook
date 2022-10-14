@@ -2,13 +2,34 @@
 
 ## Greenfield
 
-1. Make sure that you use a virtual environment to make it easier navigating between projects with different dependencies
+1. dbt requires a functional Python environment on your workstation. It's best to avoid Python that comes pre-installed with your OS, and we recommend creating a virtual environment dedicated to the project. This can be done using any of Python's virtual environment tools, although **we recommend virtualenv** for ease of use.
 
-```bash
-python3 -m venv venv
-source venv/bin/activate
-```
-> Make sure you add `venv` to `.gitignore` 
+> Use the latest version of Python 3.10 if possible.
+
+Mac:
+
+There are many ways to install Python on a Mac. We recommend using [Homebrew](https://brew.sh/):
+
+1. Install Homebrew: `/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"`
+2. Install Python 3.10: `brew install python@3.10`
+3. Install Virtualenv: `pip3 install virtualenv`
+4. Go to the directory where you store your codebases. If you don't have any, we recommend creating a `~/Code` directory.
+5. Clone the git repository. If the code is store on GitHub, we recomment using the [GitHub CLI](https://cli.github.com/)
+6. Go to the `project` directory.
+7. Create a virtual environment: `python3 -m venv .venv`
+8. Activate the virtual environment: `source .venv/bin/activate`
+
+Windows:
+
+1. Install Python 3.10: [https://www.python.org/downloads/release/python-3106/](https://www.python.org/downloads/release/python-3106/)
+2. Install Virtualenv: `python -m pip install virtualenv`
+3. Go to the directory where you store your codebases. If you don't have any, we recommend creating a `C:\Users\YourName\dbt_projects\` directory.
+4. Clone the git repository. If the code is store on GitHub, we recomment using the [GitHub CLI](https://cli.github.com/)
+5. Go to the `project` directory.
+6. Create a virtual environment: `python -m venv .venv`
+7. Activate the virtual environment: `.\.venv\Scripts\activate`
+
+> Make sure you add your virtualenv directory to `.gitignore` 
 
 2. Install dbt dependencies
 
