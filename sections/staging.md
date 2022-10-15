@@ -15,7 +15,7 @@ packages:
 ```
 and run `dbt deps` to install.
 
-## Configuration of sources
+## Step 1. Configuration of sources
 
 External table mappings are defined in YAML configs for each table under the appropriate grouping (e.g. `source1/`, `source2/`).
 
@@ -25,8 +25,12 @@ Store your AWS credentials in your environment variables. For example, in your `
 export AWS_KEY_ID=<your_aws_access_key_id>
 export AWS_SECRET_KEY=<your_aws_secret_access_key>
 ```
+## Step 2. Create the necessary external stage and file format
+### Snowflake
 
-### Step 1. Create an external stage pointing to the S3 bucket with the source files
+[Docs](https://docs.snowflake.com/en/user-guide/tables-external-intro.html)
+
+In Snowflake you have to create a stage and file format first
 
 ```sql
   CREATE STAGE IF NOT EXISTS order_lines_data
@@ -35,7 +39,6 @@ export AWS_SECRET_KEY=<your_aws_secret_access_key>
           AWS_KEY_ID = '{{ env_var('AWS_KEY_ID') }}'
           AWS_SECRET_KEY = '{{ env_var('AWS_SECRET_KEY') }}'
 ```
-### Step 2. Create file format for source files
 
 ```sql
   CREATE FILE FORMAT IF NOT EXISTS csv_format
@@ -45,54 +48,19 @@ export AWS_SECRET_KEY=<your_aws_secret_access_key>
       FIELD_OPTIONALLY_ENCLOSED_BY = '"'
       DATE_FORMAT = 'YYYY-MM-DD' ;
 ```
-### Step 3. Populate YAML mappings
 
-Each table per source company shuld follow the template below:
+[Explore other file formats](https://docs.snowflake.com/en/sql-reference/sql/create-file-format.html)
+### BigQuery
 
-```yml
-version: 2
+[Docs](https://cloud.google.com/bigquery/docs/external-tables)
+## Step 3. Populate YAML mappings
 
-sources:
-  - name: your_source_name  #name from which we read the source w/ {{ source('your_name_source', xxx) }}
-    database: RAW       #target database
-    schema: SCHEMA_NAME       #target schema
-    loader: s3      #identifier (optional)
-    quoting:        #conventions (optional)
-      database: true
-      schema: true
-      identifier: true
+Each table per source company should follow the template below:
 
-    tables:         #here you start to define your tables associated with the source
-      - name: transactions      #reference name when sourcing with {{source('your_source_name', 'transactions')}}
-        identifier: ORDER_LINES_DATA_RAW      #output table name in Snowflake
-        description: transactions data stored as csv files on s3
-        external:
-          location: '@order_lines_data'       #stage reference in Step1.
-          pattern: ".*transactions.csv"             #pattern of target files in S3 (optional)
-          file_format: "(format_name = csv_format)"         #format reference in Step 2.
-          auto_refresh: true        #auto metadata refresh with AWS SQS (optional)
-          partitions:       # optional
-            - name: collector_hour
-              data_type: timestamp
-              expression: to_timestamp(substr(metadata$filename, 8, 13), 'YYYY/MM/DD/HH24')
+[Snowflake](https://github.com/dbt-labs/dbt-external-tables/blob/main/sample_sources/snowflake.yml)
+[BigQuery](https://github.com/dbt-labs/dbt-external-tables/blob/main/sample_sources/bigquery.yml)
 
-        # Specify ALL column names + datatypes.
-        # Column order must match for CSVs, column names must match for other formats.
-        # Some databases support schema inference (Snowflake's schema detection is only in private preview as of 11/18/2021).
-
-        columns:       
-          - name: store_name
-            data_type: varchar(255)
-            description: ""
-          - name: channel
-            data_type: varchar(255)
-            description: ""
-          - name: user_id
-            data_type: varchar(255)
-            description: ""
-            ...
-```
-### Step 4. Load external table from S3 stage
+### Step 4. Load external table from stage
 
 Option 1.: Refresh every datasource
 
@@ -122,7 +90,7 @@ After initiating the macros to source form the YAML files, you should see someth
 16:27:45 + 3 of 7 (1) SUCCESS 1
 ```
 
-### Step 5. Auto-refresh via AWS SQS and Snowpipe
+### Step 5. Auto-refresh via AWS SQS and Snowpipe (Snowflake only)
 
 Once you are done adding your external table, head to the AWS Console to set up your auto-ingesting via Snowpipe and SQS notifications.
 

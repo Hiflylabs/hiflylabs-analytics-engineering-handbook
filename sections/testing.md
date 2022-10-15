@@ -64,3 +64,5 @@ models:
       - dbt_utils.expression_is_true:
           expression: "created_at <= CURRENT_TIMESTAMP"
 ```
+
+TODO: add more examples/conventions

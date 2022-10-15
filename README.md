@@ -2,10 +2,12 @@
 
 [<img src="misc/hifly.png" align="right" width="150">](https://www.getdbt.com/)
 
-dbt best practices and standards used in the AXE team at Hiflylabs.
+dbt best practices and standards used in the AXE team at Hiflylabs. Also describes an analytics engineer lifecycle from onboarding to deploying your first PR.
 
-**NOTE: This is a work in progress and only applicable for projects powered by Snowflake/BigQuery.**
+Supported cloud datawarehouses:
 
+-   :snowflake: [Snowflake](https://www.snowflake.com/)
+-   :mag: [BigQuery](https://cloud.google.com/bigquery)
 # Table of Contents
 1. [Onboarding](/sections/onboarding.md)
 2. [Dev Tools](/sections/dev_tools.md)

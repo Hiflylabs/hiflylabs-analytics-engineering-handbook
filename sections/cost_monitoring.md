@@ -4,6 +4,10 @@
 
 [dbt_artifacts](https://github.com/brooklyn-data/dbt_artifacts)
 
+There are built-in cost monitoring solutions in BI tools as well but they are not parsing the `manifest.json`, only checks warehouse metrics.
+
+[Looker - Snowflake Cost and Usage](https://marketplace.looker.com/marketplace/detail/snowflake-cost-v2)
+
 ## Simplified (in-house) Artifacts
 
 [dbt-snowflake-artifacts](https://github.com/Hiflylabs/dbt-snowflake-artifacts)

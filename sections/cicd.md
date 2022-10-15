@@ -8,7 +8,7 @@ Find the official documentation [here](https://docs.getdbt.com/docs/dbt-cloud/us
 
 ### ZCC CI
 
-The zero-copy-clone CI creates a mirror environment of the target database and builds the models in that environment, ensuring that all tables are available in the environment.
+The zero-copy-clone CI creates a mirror environment of the target database and builds the models in that environment, ensuring that there are no missing external references in the environment.
 
 Original idea from [here](https://medium.com/airtribe/test-sql-pipelines-against-production-clones-using-dbt-and-snowflake-2f8293722dd4)
 

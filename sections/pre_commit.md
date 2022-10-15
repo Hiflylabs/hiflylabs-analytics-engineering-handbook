@@ -1,5 +1,7 @@
 # Pre-commit
 
+[What is precommit?](https://pre-commit.com/)
+
 ### Installation
 
 ```bash
@@ -14,7 +16,7 @@ We are mainly using the following three repos:
 
 ### Configuration
 
-Add to `.pre-commit-config.yaml`
+Add to `project/.pre-commit-config.yaml`
 
 ```yaml
 repos:
@@ -44,10 +46,10 @@ repos:
   hooks:
     - id: sqlfluff-lint
       files: 'models/'
-      additional_dependencies: ['dbt-snowflake==1.2.0', 'sqlfluff-templater-dbt']
+      additional_dependencies: ['sqlfluff-templater-dbt']
     - id: sqlfluff-fix
       files: 'models/'
-      additional_dependencies: ['dbt-snowflake==1.2.0', 'sqlfluff-templater-dbt']
+      additional_dependencies: ['sqlfluff-templater-dbt']
 ```
 ### Initialization
 

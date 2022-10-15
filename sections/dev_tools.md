@@ -88,3 +88,5 @@ The following will configure spacing/indentation rules to follow the style guide
 ## pip modules
 
 - [dbt-osmosis](https://github.com/z3z1ma/dbt-osmosis)
+
+For more, do regurarly check our [awesome-dbt](https://github.com/Hiflylabs/awesome-dbt)
