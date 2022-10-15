@@ -1,4 +1,4 @@
-# Pre-commit
+# 📐 Pre-commit
 
 [What is precommit?](https://pre-commit.com/)
 

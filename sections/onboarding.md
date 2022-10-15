@@ -1,12 +1,12 @@
 # Onboarding
 
-## Greenfield
+## 🟢 Greenfield
 
 1. dbt requires a functional Python environment on your workstation. It's best to avoid Python that comes pre-installed with your OS, and we recommend creating a virtual environment dedicated to the project. This can be done using any of Python's virtual environment tools, although **we recommend virtualenv** for ease of use.
 
 > Use the latest version of Python 3.10 if possible.
 
-Mac:
+**Mac:**
 
 There are many ways to install Python on a Mac. We recommend using [Homebrew](https://brew.sh/):
 
@@ -19,7 +19,8 @@ There are many ways to install Python on a Mac. We recommend using [Homebrew](h
 7. Create a virtual environment: `python3 -m venv .venv`
 8. Activate the virtual environment: `source .venv/bin/activate`
 
-Windows:
+**Windows:**
+
 0. CLI Based installer for Git, Python dbt, VS-Code: [https://github.com/Hiflylabs/dbt-develop-install](https://github.com/Hiflylabs/dbt-develop-install)
 1. Install Python 3.10: [https://www.python.org/downloads/release/python-3106/](https://www.python.org/downloads/release/python-3106/)
 2. Install Virtualenv: `python -m pip install virtualenv`
@@ -55,7 +56,7 @@ dbt-osmosis
 dbt init <project_name>
 ```
 
-## Brownfield
+## 🟤 Brownfield
 
 **Mach Speed: Copy-Edit-Paste**
 
@@ -95,14 +96,14 @@ dbt docs serve
 
 3. store credentials and secrets in the environment by adding the following to your `./venv/bin/activate` file
 
-### Snowflake:
+### ❄️ Snowflake:
 
 ```bash
 export SNOWFLAKE_USER=<your_snowflake_user>
 export SNOWFLAKE_PASSWORD=<your_snowflake_password>
 export SNOWFLAKE_ACCOUNT=<your_snowflake_account>
 ```
-### BigQuery:
+### 🔍 BigQuery:
 
 ```bash
 export BIGQUERY_PROJECT=<your_bigquery_project_id>
@@ -110,7 +111,7 @@ export BIGQUERY_PROJECT=<your_bigquery_project_id>
 
 4. Setup your profile and project file
 
-### Snowflake
+### ❄️ Snowflake
 
 For more, consult the [dbt docs](https://docs.getdbt.com/reference/warehouse-profiles/snowflake-profile)
 
@@ -131,7 +132,7 @@ sf_project_name:
   target: dev
 ```
 
-### BigQuery
+### 🔍 BigQuery
 
 For more consult the [dbt docs](https://docs.getdbt.com/reference/warehouse-profiles/bigquery-profile)
 

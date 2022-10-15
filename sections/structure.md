@@ -1,4 +1,4 @@
-# How we structure and style our projects
+# 🏗️ How we structure and style our projects
 
 We follow the [Matt Mazur SQL style guide](https://github.com/mattm/sql-style-guide) and the one by [Fishtown Analytics for dbt-specific behaviors](https://github.com/fishtown-analytics/corp/blob/master/dbt_coding_conventions.md#sql-style-guide).
 

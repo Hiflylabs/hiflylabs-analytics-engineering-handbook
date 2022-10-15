@@ -1,15 +1,15 @@
-# Deployment
+# 🛳️ Deployment
 
 Our goal is to keep an isolated environment for testing out new features before pushing it to production.
 
 This is called as blue-green deployment. See more [here](https://discourse.getdbt.com/t/performing-a-blue-green-deploy-of-your-dbt-project-on-snowflake/1349/8).
 
-### Snowflake
-#### Blue/green deployment
+### ❄️ Snowflake
+#### 🟦🟩 Blue/green deployment
 
 https://blog.montrealanalytics.com/blue-green-deployment-with-dbt-and-snowflake-922f1c658011
 
-### BigQuery
+### 🔍 BigQuery
 
 Unfortunately, swapping is only available in Snowflake, so the idea is to run & test all models before loading it to the production environment instead.
 
@@ -195,7 +195,7 @@ dbt run-operation write_audit_publish
 - We can’t copy views — no problem because we don’t have those
 - Additional storage cost incurred on the difference between clones and source tables
 
-### Mirror Layer
+### 🪞 Mirror Layer
 
 Time and time again, we stumble into data integration issues because we are still dependent on third-party data submissions. Put simply, if source shares/servers are not live, we are not able to run our end-to-end jobs or certain tables are empty.
 

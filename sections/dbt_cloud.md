@@ -1,4 +1,4 @@
-# dbt Cloud Setup
+# ☁️ dbt Cloud Setup
 
 ## Set up defer build
 

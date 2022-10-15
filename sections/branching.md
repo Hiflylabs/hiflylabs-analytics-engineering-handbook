@@ -1,4 +1,4 @@
-# Branching
+# 🎋 Branching
 
 For branching we use the [git flow](https://nvie.com/posts/a-successful-git-branching-model/) branching model. 
 
@@ -11,7 +11,7 @@ For branching we use the [git flow](https://nvie.com/posts/a-successful-git-bran
 </p>
 
 
-## Main rules:
+## 👩‍⚖️ Main rules:
 
 - Each feature branch/PR should represent one logical piece of work
 - Make sure commits are related to the pull request and look clean
@@ -39,7 +39,8 @@ PRs should be reviewed by other developers and (or) project maintainers, prefera
 
 PRs all-around the project should be the core responsibility of the project maintainer. Someone who oversees the business logic and can prioritize between developer tickets created for the sprint. Feature developers must ensure that the source branch does not have any conflict with the target branch. Upon merging a feature to development, the feature branch should be purged from the remote repository.
 
-### Hotfixes:
+### 🌡️ Hotfixes:
+
 Hotfixes to the main branch can be developed and integrated in one of the two following ways:
 
 As a standard modification via the development branch. Since deploys are planned to be fairly frequent, many hotfixes may wait until the next scheduled release (in many cases a few days or less).

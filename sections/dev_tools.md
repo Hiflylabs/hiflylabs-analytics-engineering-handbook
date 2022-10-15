@@ -1,4 +1,4 @@
-# Dev Tools
+# 🛠️ Dev Tools
 
 We recommend using VS Code if you don't currently have a preference.
 ## VSCode plugins
@@ -82,7 +82,7 @@ The following will configure spacing/indentation rules to follow the style guide
     ],
 ```
 
-## dbt packages
+## 📦 dbt packages
 
 - [dbt-codegen](https://github.com/dbt-labs/dbt-codegen)
 ## pip modules

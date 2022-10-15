@@ -1,4 +1,4 @@
-# CI/CD
+# 🪡 CI/CD
 
 ### Standard Approach
 

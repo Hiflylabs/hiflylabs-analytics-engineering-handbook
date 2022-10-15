@@ -1,6 +1,6 @@
-# Cost Monitoring
+# 💰 Cost Monitoring
 
-## Out-of-the-box
+## 🥡 Out-of-the-box
 
 [dbt_artifacts](https://github.com/brooklyn-data/dbt_artifacts)
 
@@ -12,7 +12,7 @@ There are built-in cost monitoring solutions in BI tools as well but they are no
 
 [dbt-snowflake-artifacts](https://github.com/Hiflylabs/dbt-snowflake-artifacts)
 
-## How to set up Snowflake resource monitoring:
+## 📊 How to set up Snowflake resource monitoring:
 
 1. First, accountadmins should enable notifications
 2. Use the ACCOUNTADMIN system role. If you aren’t, in the drop-down menu next to your name in the upper-right corner, select Switch role » ACCOUNTADMIN.

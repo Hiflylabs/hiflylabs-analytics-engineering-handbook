@@ -1,13 +1,13 @@
-# Testing
+# 🧪 Testing
 
-## Useful packages
+## 📦 Useful packages
 
 - [dbt_utils](https://github.com/dbt-labs/dbt-utils#relationships_where-source)
 - [dbt_expectations](https://github.com/calogica/dbt-expectations)
 - [dbt-project-evaluator](https://github.com/dbt-labs/dbt-project-evaluator)
 - [dbt-unit-testing](https://github.com/EqualExperts/dbt-unit-testing)
 
-## Non-negotiables
+## ‼️ Non-negotiables
 
 Primary (surrogate) keys should always be:
 

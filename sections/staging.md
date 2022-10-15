@@ -1,4 +1,4 @@
-# Staging
+# ⛲ Staging
 
 ## dbt-external-tables Setup
 
@@ -26,7 +26,7 @@ export AWS_KEY_ID=<your_aws_access_key_id>
 export AWS_SECRET_KEY=<your_aws_secret_access_key>
 ```
 ## Step 2. Create the necessary external stage and file format
-### Snowflake
+### ❄️ Snowflake
 
 [Docs](https://docs.snowflake.com/en/user-guide/tables-external-intro.html)
 
@@ -50,7 +50,7 @@ In Snowflake you have to create a stage and file format first
 ```
 
 [Explore other file formats](https://docs.snowflake.com/en/sql-reference/sql/create-file-format.html)
-### BigQuery
+### 🔍 BigQuery
 
 [Docs](https://cloud.google.com/bigquery/docs/external-tables)
 ## Step 3. Populate YAML mappings
