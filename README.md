@@ -8,7 +8,8 @@ Supported data clouds:
 
 ❄️ [Snowflake](https://www.snowflake.com/)
 🔍 [BigQuery](https://cloud.google.com/bigquery)
-# Table of Contents
+
+# Sections
 1. 🏂 [Onboarding](/sections/onboarding.md)
 2. 🛠️ [Dev Tools](/sections/dev_tools.md)
 3. 🏗️ [Structure & Styling](/sections/structure.md)
