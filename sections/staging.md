@@ -116,7 +116,7 @@ Check out further resources on the dbt-external-tables package:
 - https://docs.snowflake.com/en/sql-reference/sql/create-file-format.html
 - https://docs.snowflake.com/en/user-guide/tables-external-s3.html
 
-## Ingest Data from Snowflake Shares
+## 🤲 ❄️ Ingest Data from Snowflake Shares
 
 Ingesting data to the warehouse from a Snowflake share is much more simple.
 

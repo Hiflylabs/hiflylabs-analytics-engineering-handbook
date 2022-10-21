@@ -10,4 +10,7 @@
 
 ## Extensions
 
-- [dbt Cloud Raycast extension](https://www.raycast.com/zsombor-flds/dbtcloud) - Mac only
+### Raycast (Mac only)
+- [dbt Cloud Raycast extension](https://www.raycast.com/zsombor-flds/dbtcloud)
+- [dbt Cloud Metadata extension](https://github.com/b-per/raycast-dbt-cloud-metadata)
+- [dbt Documentation extension](https://www.raycast.com/b-per/dbt-documentation)

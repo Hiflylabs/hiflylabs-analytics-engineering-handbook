@@ -7,7 +7,21 @@ This is called as blue-green deployment. See more [here](https://discourse.getdb
 ### ❄️ Snowflake
 #### 🟦🟩 Blue/green deployment
 
-https://blog.montrealanalytics.com/blue-green-deployment-with-dbt-and-snowflake-922f1c658011
+**References:**
+- [Standard implementation](https://discourse.getdbt.com/t/performing-a-blue-green-deploy-of-your-dbt-project-on-snowflake/1349/8)
+- [In more detail](https://blog.montrealanalytics.com/blue-green-deployment-with-dbt-and-snowflake-922f1c658011)
+
+> ⚠️ Warning! If you want to keep using incremental build, go with production rollback 👇 instead!
+
+#### 🧻 Production rollback
+
+Instead of swapping databases, (1) we copy the previous production data to a staging environment, (2) rebuild the tables under scope, then (3) clone it back to production.
+
+This also works with incremental models, because we always clone back the latest production loading before building on top of it.
+
+<p align="center">
+<img src="../misc/prod_rollback.drawio.svg">
+</p>
 
 ### 🔍 BigQuery
 
@@ -117,7 +131,7 @@ What we can do is to use the production job to load to the data to a new dataset
 
     {% set tables = dict() %}
 
-    {% set tags_to_clone = ['analytics','utils','facebook_ads','microsoft_ads','google_ads','klaviyo'] %}
+    {% set tags_to_clone = var('tags_to_clone') %}
 
     -- create empty dictionary for table-tag mapping
     {% for model in graph.nodes.values() %}
@@ -173,6 +187,13 @@ What we can do is to use the production job to load to the data to a new dataset
 {% endif %}
 
 {% endmacro %}
+```
+
+Cloned tags are driven by the `tags_to_clone` variable:
+
+```yaml
+vars:
+  tags_to_clone: ['mart', 'utils']
 ```
 
 **Then in dbt Cloud, the process would be:**
