@@ -54,7 +54,7 @@ If the hotfix is very urgent, the following steps are required:
 6. Coordinate with business users on the most appropriate time to make the new/fixed data available.
 7. At such time, upon the successful PR test and merge, run the daily job..
 
-[PR Template](../templates/pull_request_template.md)):
+[PR Template](../templates/pull_request_template.md)
 
 Copy this below into `.github/pull_request_template.md`:
 
