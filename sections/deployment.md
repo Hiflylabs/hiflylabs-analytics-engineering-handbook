@@ -13,6 +13,21 @@ This is called as blue-green deployment. See more [here](https://discourse.getdb
 
 > ⚠️ Warning! If you want to keep using incremental build, go with production rollback 👇 instead!
 
+As former productiontables get demoted to stagingvia the swap feature, the next incremental load will build on top of obsolete tables in staging before swapping.
+
+Imagine:
+
+- T: Imagine that our run fully refreshes the data in staging, then swaps it with the production database in T-1
+- T+1: A new production cycle is due, but only certain data sources have to be processed again, so you decide to go with an incremental refresh.
+- T+1: You then wonder why all the information we updated in T is missing?
+
+<p align="center">
+<img src="../misc/incremental_bluegreen.drawio.png">
+</p>
+
+
+Well, since we built on top of a production data in T-1 before swapping again, the information loss is the difference between staging and production in T!
+
 #### 🧻 Production rollback
 
 Instead of swapping databases, (1) we copy the previous production data to a staging environment, (2) rebuild the tables under scope, then (3) clone it back to production.
@@ -20,7 +35,7 @@ Instead of swapping databases, (1) we copy the previous production data to a sta
 This also works with incremental models, because we always clone back the latest production loading before building on top of it.
 
 <p align="center">
-<img src="../misc/prod_rollback.drawio.svg">
+<img src="../misc/prod_rollback_rev.drawio.png">
 </p>
 
 ### 🔍 BigQuery
