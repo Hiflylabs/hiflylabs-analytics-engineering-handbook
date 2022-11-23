@@ -90,3 +90,37 @@ The following will configure spacing/indentation rules to follow the style guide
 - [dbt-osmosis](https://github.com/z3z1ma/dbt-osmosis)
 
 For more, do regurarly check our [awesome-dbt](https://github.com/Hiflylabs/awesome-dbt)
+
+
+## Terminal Hacks
+
+### Run only the localy modifed(checked into version control) dbt models
+
+To setup add this to your .bashrc/.zshrc
+```bash
+function dbt_run_changed() {
+    children=$1
+    models=$(git diff --name-only | grep '\.sql$' | awk -F '/' '{ print $NF }' | sed "s/\.sql$/${children}/g" | tr '\n' ' ')
+    echo "Running models: ${models}"
+    dbt run --models $models
+}
+```
+### Interactive dbt model search - a command line finder for dbt models
+
+To setup add this to your .bashrc/.zshrc
+
+```bash
+FZF_DBT_PATH=~/.fzf-dbt/fzf-dbt.sh
+if [[ ! -f $FZF_DBT_PATH ]]; then
+    FZF_DBT_DIR=$(dirname $FZF_DBT_PATH)
+    print -P "%F{green}Installing fzf-dbt into $FZF_DBT_DIR%f"
+    mkdir -p $FZF_DBT_DIR
+    command curl -L https://raw.githubusercontent.com/Infused-Insight/fzf-dbt/main/src/fzf_dbt.sh > $FZF_DBT_PATH && \
+        print -P "%F{green}Installation successful.%f" || \
+        print -P "%F{red}The download has failed.%f"
+fi
+
+export FZF_DBT_PREVIEW_CMD="cat {}"
+export FZF_DBT_HEIGHT=80%
+source $FZF_DBT_PATH
+```
