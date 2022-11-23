@@ -8,10 +8,11 @@
 pip3 install pre-commit
 ```
 
-We are mainly using the following three repos:
+We are mainly using the following four repos:
 - [Pre-commit hooks](https://github.com/pre-commit/pre-commit-hooks)
 - [SQLFluff](https://docs.sqlfluff.com/en/stable/production.html)
 - [pre-commmit-dbt](https://github.com/Montreal-Analytics/dbt-gloss)
+- [sqlfmt](http://sqlfmt.com/)
 
 
 ### Configuration
