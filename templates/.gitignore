@@ -1,0 +1,19 @@
+# Ignore Mac system files
+.DS_store
+
+# Ignore node_modules folder
+target/
+dbt_modules/
+logs/
+
+# Ignore all user files
+.user.yml
+
+# Ignore files related to API keys
+.env
+
+# Ignore local Python virtual environment
+.venv
+
+# Ignore dbt_packages folder
+dbt_packages/
