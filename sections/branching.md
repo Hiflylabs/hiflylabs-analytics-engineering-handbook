@@ -20,7 +20,7 @@ For branching we use the [git flow](https://nvie.com/posts/a-successful-git-bran
 - Regularly synchronize your local repos to the remote one
 - Always create branches from the `dev` branch
 - Try to minimize the time between creating a new branch and opening a PR
-- By convention, name branches as feature/<branch_name> or fix/<branch_name>
+- By convention, name branches as feature/<branch_name> or fix/<branch_name> preferably containing a ID referencing a ticket of somesort
 - Small independent fixes or bulk tests/docs can go into one branch
 
 Submitting a PR:
