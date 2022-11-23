@@ -22,6 +22,7 @@ For branching we use the [git flow](https://nvie.com/posts/a-successful-git-bran
 - Try to minimize the time between creating a new branch and opening a PR
 - By convention, name branches as feature/<branch_name> or fix/<branch_name> preferably containing a ID referencing a ticket of somesort
 - Small independent fixes or bulk tests/docs can go into one branch
+- Make sure that you don't forget to delete your feature branch after the PR has been merged
 
 Submitting a PR:
 Feature PRs must be submitted to the development branch, and new releases occur when a PR is submitted from development to main. Every PR submission should follow the same template guidelines automatically provided when opening a PR.
