@@ -131,3 +131,8 @@ export FZF_DBT_PREVIEW_CMD="cat {}"
 export FZF_DBT_HEIGHT=80%
 source $FZF_DBT_PATH
 ```
+
+To get sound notification after a long running dbt command has finished
+
+```bash
+dbt run && say beep
