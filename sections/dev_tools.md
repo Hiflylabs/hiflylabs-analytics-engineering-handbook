@@ -14,7 +14,7 @@ Make sure you check in the util readme if you need to configure IDE settings to 
 - [GitHub Pull Requests and Issues](https://marketplace.visualstudio.com/items?itemName=GitHub.vscode-pull-request-github)
 - [Todo Tree](https://marketplace.visualstudio.com/items?itemName=Gruntfuggly.todo-tree)
 - [YAML](https://marketplace.visualstudio.com/items?itemName=redhat.vscode-yaml)
-
+- [Copy file name](https://marketplace.visualstudio.com/items?itemName=nemesv.copy-file-name)
 ### Specific configurations (to be added in the settings.json of VS Code)
 
 The following will remap Markdown, Yaml and SQL files to use the Jinja-flavoured interpreter:
@@ -82,6 +82,13 @@ The following will configure spacing/indentation rules to follow the style guide
     ],
 ```
 
+The following will disable SQL syntax highlight for the files under the target/ directory:
+```json
+"files.associations": {
+        "**/target/**/**/*.sql": "plaintext"
+    }
+```
+
 ## 📦 dbt packages
 
 - [dbt-codegen](https://github.com/dbt-labs/dbt-codegen)
@@ -124,3 +131,9 @@ export FZF_DBT_PREVIEW_CMD="cat {}"
 export FZF_DBT_HEIGHT=80%
 source $FZF_DBT_PATH
 ```
+
+### Local notification
+To get sound notification after a long running dbt command has finished
+
+```bash
+dbt run && say beep
