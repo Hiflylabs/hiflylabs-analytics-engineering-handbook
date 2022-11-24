@@ -132,6 +132,7 @@ export FZF_DBT_HEIGHT=80%
 source $FZF_DBT_PATH
 ```
 
+### Local notification
 To get sound notification after a long running dbt command has finished
 
 ```bash
