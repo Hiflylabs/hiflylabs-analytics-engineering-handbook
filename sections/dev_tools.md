@@ -14,7 +14,7 @@ Make sure you check in the util readme if you need to configure IDE settings to 
 - [GitHub Pull Requests and Issues](https://marketplace.visualstudio.com/items?itemName=GitHub.vscode-pull-request-github)
 - [Todo Tree](https://marketplace.visualstudio.com/items?itemName=Gruntfuggly.todo-tree)
 - [YAML](https://marketplace.visualstudio.com/items?itemName=redhat.vscode-yaml)
-
+- [Copy file name](https://marketplace.visualstudio.com/items?itemName=nemesv.copy-file-name)
 ### Specific configurations (to be added in the settings.json of VS Code)
 
 The following will remap Markdown, Yaml and SQL files to use the Jinja-flavoured interpreter:
