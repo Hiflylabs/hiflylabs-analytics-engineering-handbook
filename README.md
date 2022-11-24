@@ -9,6 +9,7 @@ Supported data clouds:
 ❄️ [Snowflake](https://www.snowflake.com/)
 🔍 [BigQuery](https://cloud.google.com/bigquery)
 🚗 [Redshift](https://aws.amazon.com/redshift/)
+🧱 [Databricks](https://www.databricks.com/)
 # Sections
 1. 🛠️ [Dev Tools](/sections/dev_tools.md)
 1. 🏗️ [Structure & Styling](/sections/structure.md)
