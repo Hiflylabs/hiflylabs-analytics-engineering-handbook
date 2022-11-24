@@ -21,3 +21,5 @@ Supported data clouds:
 1. 🧪 [Testing](/sections/testing.md)
 1. ☁️ [dbt Cloud](/sections/dbt_cloud.md)
 1. 💰 [Cost Monitoring](/sections/cost_monitoring.md)
+1. 🔍 Guides
+    - 🧱 [Databricks](/sections/databricks.md)
