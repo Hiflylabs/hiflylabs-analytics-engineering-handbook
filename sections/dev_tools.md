@@ -82,6 +82,13 @@ The following will configure spacing/indentation rules to follow the style guide
     ],
 ```
 
+The following will disable SQL syntax highlight for the files under the target/ directory:
+```json
+"files.associations": {
+        "**/target/**/**/*.sql": "plaintext"
+    }
+```
+
 ## 📦 dbt packages
 
 - [dbt-codegen](https://github.com/dbt-labs/dbt-codegen)
