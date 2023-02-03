@@ -1,6 +1,6 @@
 # 🎋 Branching
 
-For branching we use the [git flow](https://nvie.com/posts/a-successful-git-branching-model/) branching model. 
+For branching we use the [git flow](https://www.getdbt.com/blog/adopting-ci-cd-with-dbt-cloud/) branching model. 
 
 - **main**: reflects the production state of the project.
 - **dev/staging**: includes the features contained before a release (= merge to the main production branch).
@@ -10,6 +10,8 @@ For branching we use the [git flow](https://nvie.com/posts/a-successful-git-bran
 <img src="../misc/branching.png">
 </p>
 
+<figcaption align = "center"><b>Source:
+Julia Schottenstein - Adopting CI/CD with dbt Cloud</b></figcaption>
 
 ## 👩‍⚖️ Main rules:
 
@@ -24,17 +26,17 @@ For branching we use the [git flow](https://nvie.com/posts/a-successful-git-bran
 - Small independent fixes or bulk tests/docs can go into one branch
 - Make sure that you don't forget to delete your feature branch after the PR has been merged
 
-Submitting a PR:
+### Submitting a PR:
 Feature PRs must be submitted to the development branch, and new releases occur when a PR is submitted from development to main. Every PR submission should follow the same template guidelines automatically provided when opening a PR.
 
 ### It should consist
 
 - a short description around the purpose of the request,
-- the assigned JIRA ticket (if applicable),
+- the assigned JIRA/Notion/etc. ticket (if applicable),
 - the changes made in bullet points,
 - affected/introduced models
 
-## Merging
+## 🥣 Merging
 
 PRs should be reviewed by other developers and (or) project maintainers, preferably having enough information on what's the issue it solves, or what feature we are planning to implement with the underlying change. Also implemented changes should be frequently checked with business requirements to make sure that it brings the desired change.
 
@@ -57,4 +59,4 @@ If the hotfix is very urgent, the following steps are required:
 
 ## PR Template 
 
-Copy [this]((https://github.com/dbt-labs/dbt-init/blob/master/starter-project/.github/pull_request_template.md)) below into `.github/pull_request_template.md`:
+Copy [this]((https://github.com/dbt-labs/dbt-init/blob/master/starter-project/.github/pull_request_template.md)) into `.github/pull_request_template.md`:

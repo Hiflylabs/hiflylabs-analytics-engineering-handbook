@@ -1,8 +1,11 @@
-# 💰 Cost Monitoring
+# 💰 Cost and Usage Monitoring
 
 ## 🥡 Out-of-the-box
 
 [dbt_artifacts](https://github.com/brooklyn-data/dbt_artifacts)
+[dbt-snowflake-monitoring](https://github.com/get-select/dbt-snowflake-monitoring)
+[snowflake-resource-monitoring](https://github.com/dbt-labs/snowflake-resource-monitoring)
+[usagedata](https://github.com/anjane-tech/usagedata)
 
 There are built-in cost monitoring solutions in BI tools as well but they are not parsing the `manifest.json`, only checks warehouse metrics.
 
@@ -13,6 +16,8 @@ There are built-in cost monitoring solutions in BI tools as well but they are no
 [dbt-snowflake-artifacts](https://github.com/Hiflylabs/dbt-snowflake-artifacts)
 
 ## 📊 How to set up Snowflake resource monitoring:
+
+Read more about what is resource monitoring [here](https://docs.snowflake.com/en/user-guide/resource-monitoring.html)
 
 1. First, accountadmins should enable notifications
 1. Use the ACCOUNTADMIN system role. If you aren’t, in the drop-down menu next to your name in the upper-right corner, select Switch role » ACCOUNTADMIN.

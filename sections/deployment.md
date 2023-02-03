@@ -30,6 +30,8 @@ Well, since we built on top of a production data in T-1 before swapping again, t
 
 #### 🧻 Production rollback
 
+Credits: [Sean](https://www.linkedin.com/in/boxysean/) and [Sung](https://www.linkedin.com/in/sungwonchung1/) at dbt Labs
+
 Instead of swapping databases, (1) we copy the previous production data to a staging environment, (2) rebuild the tables under scope, then (3) clone it back to production.
 
 This also works with incremental models, because we always clone back the latest production loading before building on top of it.
@@ -230,6 +232,8 @@ dbt run-operation write_audit_publish
 
 - We can’t copy views — no problem because we don’t have those
 - Additional storage cost incurred on the difference between clones and source tables
+
+> ℹ️ In case you are working with views on the reporting layer, opt for [WAP](https://calogica.com/assets/wap_dbt_bigquery.pdf) (Write-Audit-Publish) instead.
 
 ### 🪞 Mirror Layer
 
