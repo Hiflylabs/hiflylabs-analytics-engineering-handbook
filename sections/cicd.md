@@ -80,6 +80,8 @@ vars:
 
 Override `generate_schema_name.sql` macro with the script below. This ensures that the CI runs within the cloned environment.
 
+Ref: https://gist.github.com/jeremyyeo/759d8675f9b36abfa8ba462c32f7c3e3#snowflake-workflow
+
 ```sql
 {% macro generate_schema_name(custom_schema_name, node) -%}
 
