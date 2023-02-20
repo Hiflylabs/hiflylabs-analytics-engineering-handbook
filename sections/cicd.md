@@ -78,4 +78,35 @@ vars:
   "schemas_to_clone" : ["ANALYTICS", "ANALYTICS_STAGING", "ANALYTICS_SEED", "ANALYTICS_RAW_SAMPLE"]
 ```
 
->N.B. Note that this can cause discrepancies if you run multiple PR as they can overwrite each other. This is why we recommend to test PRs one by one with this solution. The future implementation would create custom clone databases for each PR.
+Override `generate_schema_name.sql` macro with the script below. This ensures that the CI runs within the cloned environment.
+
+```sql
+{% macro generate_schema_name(custom_schema_name, node) -%}
+
+    {%- set default_schema = target.schema -%}
+
+    {# forcing slim CI to use standard schemas avoiding dependency issues on the warehouse level #}
+
+    {%- if target.schema[:9] == 'dbt_cloud' and custom_schema_name is none -%}
+
+        {{ 'ANALYTICS' }}
+
+    {%- elif target.schema[:9] == 'dbt_cloud' and custom_schema_name -%}
+
+        {{ 'ANALYTICS_' ~ custom_schema_name | trim }}
+
+    {%- elif custom_schema_name is none -%}
+
+        {{ default_schema }}
+
+    {%- else -%}
+
+        {{ default_schema }}_{{ custom_schema_name | trim }}
+
+    {%- endif -%}
+
+{%- endmacro %}
+```
+
+### Limitations
+Note that this can cause discrepancies if you run multiple PR as they can overwrite each other. This is why we recommend to test PRs one by one with this solution. The future implementation would create custom clone databases for each PR.
