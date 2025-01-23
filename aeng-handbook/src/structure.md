@@ -1,17 +1,12 @@
 # 🏗️ How we structure and style our projects
 
-We follow the [Matt Mazur SQL style guide](https://github.com/mattm/sql-style-guide) and the one by [Fishtown Analytics for dbt-specific behaviors](https://github.com/fishtown-analytics/corp/blob/master/dbt_coding_conventions.md#sql-style-guide).
+We follow the [Matt Mazur SQL style guide](https://github.com/mattm/sql-style-guide) and the one by [Fishtown Analytics for dbt-specific behaviors](https://docs.getdbt.com/best-practices/how-we-style/0-how-we-style-our-dbt-projects).
 
 We also follow the [best practices documented on the dbt website](https://docs.getdbt.com/docs/guides/best-practices/).
 
 **We LOVE CTEs, we don’t use subqueries!**
 
 **We LOVE trailing commas!**
-
-SQL and YAML styles are enforced by linters that runs automatically before any commit.
-
-1. https://github.com/sqlfluff/sqlfluff
-2. https://github.com/adrienverge/yamllint
 
 Find a good project checklist [here](https://discourse.getdbt.com/t/your-essential-dbt-project-checklist/1377)
 

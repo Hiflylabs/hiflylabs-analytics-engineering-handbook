@@ -1,5 +1,5 @@
-# Databricks - dbt
-
+# 🧱 Databricks
+<!-- FIXME: this needs revision -->
 ## Setup
 
 ### Databricks

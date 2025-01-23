@@ -1,8 +1,7 @@
 # 📐 Pre-commit
-
 [What is precommit?](https://pre-commit.com/)
 
-### Installation
+## Installation
 
 ```bash
 pip3 install pre-commit
@@ -15,7 +14,7 @@ We are mainly using the following four repos:
 - [sqlfmt](http://sqlfmt.com/)
 
 
-### Configuration
+## Configuration
 
 Add to `project/.pre-commit-config.yaml`
 
@@ -37,7 +36,7 @@ repos:
   - id: check-model-columns-have-desc
     files: ^models/mart
 ```
-### Initialization
+## Initialization
 
 ```bash
 pre-commit install
