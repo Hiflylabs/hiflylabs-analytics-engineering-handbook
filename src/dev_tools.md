@@ -15,6 +15,7 @@ Make sure you check in the util readme if you need to configure IDE settings to 
 - [Todo Tree](https://marketplace.visualstudio.com/items?itemName=Gruntfuggly.todo-tree)
 - [YAML](https://marketplace.visualstudio.com/items?itemName=redhat.vscode-yaml)
 - [Copy file name](https://marketplace.visualstudio.com/items?itemName=nemesv.copy-file-name)
+- [Code Spell Checker](https://marketplace.visualstudio.com/items?itemName=streetsidesoftware.code-spell-checker)
 ### Specific configurations (to be added in the settings.json of VS Code)
 
 The following will remap Markdown, Yaml and SQL files to use the Jinja-flavoured interpreter:
@@ -89,19 +90,9 @@ The following will disable SQL syntax highlight for the files under the target/ 
     }
 ```
 
-## 📦 dbt packages
-
-- [dbt-codegen](https://github.com/dbt-labs/dbt-codegen)
-## pip modules
-
-- [dbt-osmosis](https://github.com/z3z1ma/dbt-osmosis)
-
-For more, do regurarly check our [awesome-dbt](https://github.com/Hiflylabs/awesome-dbt)
-
-
 ## Terminal Hacks
 
-### Run only the localy modifed(checked into version control) dbt models
+### Run only the locally modified(checked into version control) dbt models
 
 To setup add this to your .bashrc/.zshrc
 ```bash
@@ -111,7 +102,16 @@ function dbt_run_changed() {
     echo "Running models: ${models}"
     dbt run --models $models
 }
+### Run only the locally staged(into version control) dbt models
+``````bash
+dbt_run_staged_changed () {
+        children=$1
+        models=$(git diff --name-only --cached | grep '\.sql$' | awk -F '/' '{ print $NF }' | sed "s/\.sql$/${children}/g" | tr '\n' ' ')
+        echo "Running models: ${models}"
+        dbt run --models $models
+}
 ```
+
 ### Interactive dbt model search - a command line finder for dbt models
 
 To setup add this to your .bashrc/.zshrc
@@ -137,3 +137,6 @@ To get sound notification after a long running dbt command has finished
 
 ```bash
 dbt run && say beep
+
+
+For more, do regularly check our [awesome-dbt](https://github.com/Hiflylabs/awesome-dbt)
