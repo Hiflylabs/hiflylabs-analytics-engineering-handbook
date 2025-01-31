@@ -161,8 +161,8 @@
 <h2 id="vscode-plugins"><a class="header" href="#vscode-plugins">VSCode plugins</a></h2>
 <p>Make sure you check in the util readme if you need to configure IDE settings to make them work!</p>
 <ul>
-<li><a href="https://marketplace.visualstudio.com/items?itemName=analyst-snowflake.vscode-dbt">vscode-dbt</a></li>
-<li><a href="https://marketplace.visualstudio.com/items?itemName=analyst-collective.dbt-power-user">dbt Power User</a></li>
+<li><a href="https://marketplace.visualstudio.com/items?itemName=innoverio.vscode-dbt-power-user">Power User for dbt</a>
+<em>Note:</em> Make sure that you set the extension version to 0.46.0</li>
 <li><a href="https://marketplace.visualstudio.com/items?itemName=mechatroner.rainbow-csv">Rainbow CSV</a></li>
 <li><a href="https://marketplace.visualstudio.com/items?itemName=eamodio.gitlens">GitLens</a></li>
 <li><a href="https://marketplace.visualstudio.com/items?itemName=samuelcolvin.jinjahtml">Better Jinja</a></li>
@@ -171,6 +171,7 @@
 <li><a href="https://marketplace.visualstudio.com/items?itemName=Gruntfuggly.todo-tree">Todo Tree</a></li>
 <li><a href="https://marketplace.visualstudio.com/items?itemName=redhat.vscode-yaml">YAML</a></li>
 <li><a href="https://marketplace.visualstudio.com/items?itemName=nemesv.copy-file-name">Copy file name</a></li>
+<li><a href="https://marketplace.visualstudio.com/items?itemName=streetsidesoftware.code-spell-checker">Code Spell Checker</a></li>
 </ul>
 <h3 id="specific-configurations-to-be-added-in-the-settingsjson-of-vs-code"><a class="header" href="#specific-configurations-to-be-added-in-the-settingsjson-of-vs-code">Specific configurations (to be added in the settings.json of VS Code)</a></h3>
 <p>The following will remap Markdown, Yaml and SQL files to use the Jinja-flavoured interpreter:</p>
@@ -234,23 +235,22 @@
         "**/target/**/**/*.sql": "plaintext"
     }
 </code></pre>
-<h2 id="-dbt-packages"><a class="header" href="#-dbt-packages">📦 dbt packages</a></h2>
-<ul>
-<li><a href="https://github.com/dbt-labs/dbt-codegen">dbt-codegen</a></li>
-</ul>
-<h2 id="pip-modules"><a class="header" href="#pip-modules">pip modules</a></h2>
-<ul>
-<li><a href="https://github.com/z3z1ma/dbt-osmosis">dbt-osmosis</a></li>
-</ul>
-<p>For more, do regurarly check our <a href="https://github.com/Hiflylabs/awesome-dbt">awesome-dbt</a></p>
 <h2 id="terminal-hacks"><a class="header" href="#terminal-hacks">Terminal Hacks</a></h2>
-<h3 id="run-only-the-localy-modifedchecked-into-version-control-dbt-models"><a class="header" href="#run-only-the-localy-modifedchecked-into-version-control-dbt-models">Run only the localy modifed(checked into version control) dbt models</a></h3>
+<h3 id="run-only-the-locally-modifiedchecked-into-version-control-dbt-models"><a class="header" href="#run-only-the-locally-modifiedchecked-into-version-control-dbt-models">Run only the locally modified(checked into version control) dbt models</a></h3>
 <p>To setup add this to your .bashrc/.zshrc</p>
 <pre><code class="language-bash">function dbt_run_changed() {
     children=$1
     models=$(git diff --name-only | grep '\.sql$' | awk -F '/' '{ print $NF }' | sed "s/\.sql$/${children}/g" | tr '\n' ' ')
     echo "Running models: ${models}"
     dbt run --models $models
+}
+### Run only the locally staged(into version control) dbt models
+``````bash
+dbt_run_staged_changed () {
+        children=$1
+        models=$(git diff --name-only --cached | grep '\.sql$' | awk -F '/' '{ print $NF }' | sed "s/\.sql$/${children}/g" | tr '\n' ' ')
+        echo "Running models: ${models}"
+        dbt run --models $models
 }
 </code></pre>
 <h3 id="interactive-dbt-model-search---a-command-line-finder-for-dbt-models"><a class="header" href="#interactive-dbt-model-search---a-command-line-finder-for-dbt-models">Interactive dbt model search - a command line finder for dbt models</a></h3>
@@ -273,6 +273,12 @@ source $FZF_DBT_PATH
 <p>To get sound notification after a long running dbt command has finished</p>
 <pre><code class="language-bash">dbt run &amp;&amp; say beep
 </code></pre>
+<h3 id="disable-tracking"><a class="header" href="#disable-tracking">Disable tracking</a></h3>
+<p>To disable Anonymous usage stats set the following configuration in your <em>dbt_project.yml</em></p>
+<pre><code>flags:
+  send_anonymous_usage_stats: false
+</code></pre>
+<p>For more, do regularly check our <a href="https://github.com/Hiflylabs/awesome-dbt">awesome-dbt</a></p>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="-how-we-structure-and-style-our-projects"><a class="header" href="#-how-we-structure-and-style-our-projects">🏗️ How we structure and style our projects</a></h1>
 <p>We follow the <a href="https://github.com/mattm/sql-style-guide">Matt Mazur SQL style guide</a> and the one by <a href="https://docs.getdbt.com/best-practices/how-we-style/0-how-we-style-our-dbt-projects">Fishtown Analytics for dbt-specific behaviors</a>.</p>
 <p>We also follow the <a href="https://docs.getdbt.com/docs/guides/best-practices/">best practices documented on the dbt website</a>.</p>
@@ -453,6 +459,14 @@ Feature PRs must be submitted to the development branch, and new releases occur 
 <!-- FIXME: this needs revision -->
 <h3 id="snowflake"><a class="header" href="#snowflake">Snowflake</a></h3>
 <h3 id="bigquery"><a class="header" href="#bigquery">BigQuery</a></h3>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="managing-yml-configurations"><a class="header" href="#managing-yml-configurations">Managing YMl configurations</a></h1>
+<ul>
+<li><a href="https://github.com/dbt-labs/dbt-codegen">dbt-codegen</a></li>
+</ul>
+<h2 id="pip-modules"><a class="header" href="#pip-modules">pip modules</a></h2>
+<ul>
+<li><a href="https://github.com/z3z1ma/dbt-osmosis">dbt-osmosis</a></li>
+</ul>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="-troubleshooting"><a class="header" href="#-troubleshooting">🧰 Troubleshooting</a></h1>
 <h2 id="general"><a class="header" href="#general">General</a></h2>
 <p>To debug an error, consult first the <a href="https://docs.getdbt.com/guides/legacy/debugging-errors">documentation</a>.</p>
