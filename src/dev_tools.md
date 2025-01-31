@@ -137,6 +137,12 @@ To get sound notification after a long running dbt command has finished
 
 ```bash
 dbt run && say beep
-
+```
+### Disable tracking
+To disable Anonymous usage stats set the following configuration in your *dbt_project.yml*
+```
+flags:
+  send_anonymous_usage_stats: false
+```
 
 For more, do regularly check our [awesome-dbt](https://github.com/Hiflylabs/awesome-dbt)

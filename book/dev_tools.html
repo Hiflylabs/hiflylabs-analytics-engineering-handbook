@@ -268,9 +268,13 @@ source $FZF_DBT_PATH
 <h3 id="local-notification"><a class="header" href="#local-notification">Local notification</a></h3>
 <p>To get sound notification after a long running dbt command has finished</p>
 <pre><code class="language-bash">dbt run &amp;&amp; say beep
-
-
-For more, do regularly check our [awesome-dbt](https://github.com/Hiflylabs/awesome-dbt)</code></pre>
+</code></pre>
+<h3 id="disable-tracking"><a class="header" href="#disable-tracking">Disable tracking</a></h3>
+<p>To disable Anonymous usage stats set the following configuration in your <em>dbt_project.yml</em></p>
+<pre><code>flags:
+  send_anonymous_usage_stats: false
+</code></pre>
+<p>For more, do regularly check our <a href="https://github.com/Hiflylabs/awesome-dbt">awesome-dbt</a></p>
 
                     </main>
 
