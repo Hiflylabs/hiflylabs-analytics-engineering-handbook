@@ -5,8 +5,8 @@ We recommend using VS Code if you don't currently have a preference.
 
 Make sure you check in the util readme if you need to configure IDE settings to make them work!
 
-- [vscode-dbt](https://marketplace.visualstudio.com/items?itemName=analyst-snowflake.vscode-dbt)
-- [dbt Power User](https://marketplace.visualstudio.com/items?itemName=analyst-collective.dbt-power-user)
+- [Power User for dbt](https://marketplace.visualstudio.com/items?itemName=innoverio.vscode-dbt-power-user)
+   *Note:* Make sure that you set the extension version to 0.46.0
 - [Rainbow CSV](https://marketplace.visualstudio.com/items?itemName=mechatroner.rainbow-csv)
 - [GitLens](https://marketplace.visualstudio.com/items?itemName=eamodio.gitlens)
 - [Better Jinja](https://marketplace.visualstudio.com/items?itemName=samuelcolvin.jinjahtml)
@@ -15,6 +15,7 @@ Make sure you check in the util readme if you need to configure IDE settings to 
 - [Todo Tree](https://marketplace.visualstudio.com/items?itemName=Gruntfuggly.todo-tree)
 - [YAML](https://marketplace.visualstudio.com/items?itemName=redhat.vscode-yaml)
 - [Copy file name](https://marketplace.visualstudio.com/items?itemName=nemesv.copy-file-name)
+- [Code Spell Checker](https://marketplace.visualstudio.com/items?itemName=streetsidesoftware.code-spell-checker)
 ### Specific configurations (to be added in the settings.json of VS Code)
 
 The following will remap Markdown, Yaml and SQL files to use the Jinja-flavoured interpreter:
@@ -89,19 +90,9 @@ The following will disable SQL syntax highlight for the files under the target/ 
     }
 ```
 
-## 📦 dbt packages
-
-- [dbt-codegen](https://github.com/dbt-labs/dbt-codegen)
-## pip modules
-
-- [dbt-osmosis](https://github.com/z3z1ma/dbt-osmosis)
-
-For more, do regurarly check our [awesome-dbt](https://github.com/Hiflylabs/awesome-dbt)
-
-
 ## Terminal Hacks
 
-### Run only the localy modifed(checked into version control) dbt models
+### Run only the locally modified(checked into version control) dbt models
 
 To setup add this to your .bashrc/.zshrc
 ```bash
@@ -111,7 +102,16 @@ function dbt_run_changed() {
     echo "Running models: ${models}"
     dbt run --models $models
 }
+### Run only the locally staged(into version control) dbt models
+``````bash
+dbt_run_staged_changed () {
+        children=$1
+        models=$(git diff --name-only --cached | grep '\.sql$' | awk -F '/' '{ print $NF }' | sed "s/\.sql$/${children}/g" | tr '\n' ' ')
+        echo "Running models: ${models}"
+        dbt run --models $models
+}
 ```
+
 ### Interactive dbt model search - a command line finder for dbt models
 
 To setup add this to your .bashrc/.zshrc
@@ -137,3 +137,12 @@ To get sound notification after a long running dbt command has finished
 
 ```bash
 dbt run && say beep
+```
+### Disable tracking
+To disable Anonymous usage stats set the following configuration in your *dbt_project.yml*
+```
+flags:
+  send_anonymous_usage_stats: false
+```
+
+For more, do regularly check our [awesome-dbt](https://github.com/Hiflylabs/awesome-dbt)

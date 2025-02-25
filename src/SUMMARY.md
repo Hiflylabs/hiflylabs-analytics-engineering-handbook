@@ -7,6 +7,7 @@
 -  [📐 Pre-commit](./pre_commit.md)
 -  [🪡 CI/CD](./cicd.md)
 - [Lint and format](./linters.md)
+- [Managing YMls](./yml.md)
 - [🧰 Troubleshooting](./troubleshooting.md)
 - [🛳️ Deployment](./deployment.md)
 - [🧪 Testing](./testing.md)
