@@ -1,3 +1,3 @@
 # ❄️ Snowflake
-- [Cost Optimisation](./platforms/snowflake/cost_optimisation.md)
-- [Shares](./platforms/snowflake/shares.md)
+- [Cost Optimisation](./cost_optimisation.md)
+- [Shares](./shares.md)
