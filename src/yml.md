@@ -1,9 +1,7 @@
 # Managing YMl configurations
 
-- [dbt-codegen](https://github.com/dbt-labs/dbt-codegen)
-## pip modules
-
-- [dbt-osmosis](https://github.com/z3z1ma/dbt-osmosis)
+- dbt package: [dbt-codegen](https://github.com/dbt-labs/dbt-codegen)
+- pip module: [dbt-osmosis](https://github.com/z3z1ma/dbt-osmosis)
 
 
 ## dbt-codegen
@@ -17,8 +15,8 @@ It is a dbt packages containing macros for generating basic yaml files and dbt m
 - Generate boilerplate sql for importing referenced models as CTEs (`generate_model_import_ctes`)
 
 ### Usage note 
-- Calling the macros using the `dbt run-operation` command will output the result to the terminal, you have to manually create the corresponding yaml files and then copy (or pipe) the content into them
-- `generate_model_yaml` columns can inherit ther description from upstream models ()
+- Calling the macros using the `dbt run-operation` command will output the result to the terminal, you have to manually create the corresponding yaml files and then copy (or pipe) the generated content into them
+- Using the `generate_model_yaml` macro, columns can inherit their description from upstream models (when the column name is matching with the upstream column)
 
 ## dbt-osmosis
 ### What is dbt-osmosis
@@ -34,8 +32,8 @@ It is a python based tool that can be used for automated yaml file generation an
 
 ### Usage notes
 - Configuration is written into the `dbt_project.yml` file
-- - For sources, it can be defined under `vars.dbt-osmosis.sources`
-- - For models, using the `+dbt-osmosis` and `+dbt-osmosis-options` keys under `models.<dbt project name>`
+    - For sources, it can be defined under `vars.dbt-osmosis.sources`
+    - For models, using the `+dbt-osmosis` and `+dbt-osmosis-options` keys under `models.<dbt project name>`
 - The yaml file management strategy is highly configurable (eg. one file per model / folder, file name, file path)
 - It can be run on-demand from a terminal or in an automated way as a pre-commit hook or part of the CI pipeline
 
