@@ -20,5 +20,6 @@
         - [Shares](./platforms/snowflake/shares.md)
         - [Stages and External Tables](./platforms/snowflake/staging.md)
     - [🔍 BigQuery](./platforms/bigquery/README.md)
+        - [Python Models](./platforms/bigquery/bq_python.md)
     - [🚗 Redshift](./platforms/redshift/README.md)
     - [🧱 Databricks](./platforms/databricks/README.md)
