@@ -7,7 +7,7 @@ For branching we use the [git flow](https://nvie.com/posts/a-successful-git-bran
 - **feature/name**: holding atomic changes to the project and to be merged into the development branch via separate peer-reviewed PRs.
 
 <p align="center">
-<img src="/misc/branching.png">
+<img src="misc/branching.png">
 </p>
 
 
