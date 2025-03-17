@@ -7,7 +7,7 @@ For branching we use the [git flow](https://nvie.com/posts/a-successful-git-bran
 - **feature/name**: holding atomic changes to the project and to be merged into the development branch via separate peer-reviewed PRs.
 
 <p align="center">
-<img src="../misc/branching.png">
+<img src="./src/misc/branching.png">
 </p>
 
 
@@ -57,4 +57,4 @@ If the hotfix is very urgent, the following steps are required:
 
 ## PR Template 
 
-Copy [this]((https://github.com/dbt-labs/dbt-init/blob/master/starter-project/.github/pull_request_template.md)) below into `.github/pull_request_template.md`:
+Copy [this](https://github.com/dbt-labs/dbt-init/blob/master/starter-project/.github/pull_request_template.md) below into `.github/pull_request_template.md`:
