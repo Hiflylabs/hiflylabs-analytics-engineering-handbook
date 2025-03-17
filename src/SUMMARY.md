@@ -1,6 +1,6 @@
 # Summary
 
-- [Intro](./README.md)
+- [Intro](../README.md)
 - [🛠️ Dev Tools](./dev_tools.md)
 -  [🏗️ Structure & Styling](./structure.md)
 -  [🎋 Branching](./branching.md)

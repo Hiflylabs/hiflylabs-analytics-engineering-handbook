@@ -1,6 +1,9 @@
 # Hiflylabs Analytics Engineering Handbook
 
-[<img src="./src/misc/hifly.png" align="right" width="150">](https://www.getdbt.com/)
+[<img src="https://www.hiflylabs.com/_next/static/media/default.8aaa4c0c.svg" align="right" width="150" alt="Default Logo">](https://www.hiflylabs.com/)
 
-dbt best practices and standards used in the Analytics Engineer team at Hiflylabs.
-The deployed Handbook is available [here](https://hiflylabs.github.io/hiflylabs-analytics-engineering-handbook)
+
+This is a collection of standards and tips for practicing Analytics Engineering craftsmanship at Hiflylabs.
+
+
+The deployed Handbook is available [here](https://hiflylabs.github.io/hiflylabs-analytics-engineering-handbook), checkout the [Awesome dbt repository](https://github.com/Hiflylabs/awesome-dbt) for additional resources.
