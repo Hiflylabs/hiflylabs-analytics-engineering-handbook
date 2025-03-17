@@ -22,7 +22,7 @@ Imagine:
 - T+1: You then wonder why all the information we updated in T is missing?
 
 <p align="center">
-<img src="../misc/incremental_bluegreen.drawio.png">
+<img src="/misc/incremental_bluegreen.drawio.png">
 </p>
 
 
@@ -35,7 +35,7 @@ Instead of swapping databases, (1) we copy the previous production data to a sta
 This also works with incremental models, because we always clone back the latest production loading before building on top of it.
 
 <p align="center">
-<img src="../misc/prod_rollback_rev.drawio.png">
+<img src="/misc/prod_rollback_rev.drawio.png">
 </p>
 
 ### 🔍 BigQuery
@@ -55,7 +55,7 @@ This is a classical approach mentioned by the deck linked above.
 3. Traffic is stopped if the build failed in the audit environment.
 
 <p align="center">
-<img src="../misc/bigquery_wap.drawio.svg">
+<img src="/misc/bigquery_wap.drawio.svg">
 </p>
 
 
@@ -112,7 +112,7 @@ One thing which helps us move forward is that BigQuery also has now a Table Clon
 What we can do is to use the production job to load to the data to a new dataset e.g. `analytics_stage` and clone the top-level tables with the `mart` tag to `analytics_prod`.
 
 <p align="center">
-<img src="../misc/bigquery_wac.drawio.svg">
+<img src="/misc/bigquery_wac.drawio.svg">
 </p>
 
 >Please do review the code below before copy-pasting as it can be specific to a use-case!
@@ -240,7 +240,7 @@ Another way to overcome that is instead of creating is that we create a layer at
 Structurally, the project would be extended with a `raw` layer which copies the source tables 1:1:
 
 <p align="center">
-<img src="../misc/mirror_layer.svg">
+<img src="/misc/mirror_layer.svg">
 </p>
 
 ```sql
