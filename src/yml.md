@@ -1,4 +1,4 @@
-# Managing YMl configurations
+# Managing YML configurations
 
 - dbt package: [dbt-codegen](https://github.com/dbt-labs/dbt-codegen)
 - pip module: [dbt-osmosis](https://github.com/z3z1ma/dbt-osmosis)
