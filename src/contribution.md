@@ -1,4 +1,4 @@
-## Deploy the handbook locally
+## Develop the handbook locally
 This project uses [`mdBook`](https://github.com/rust-lang/mdBook) to create the deployed version of the handbook. 
 To install `mdBook` on your device please refer to this [installation guide](https://rust-lang.github.io/mdBook/guide/installation.html).
 
