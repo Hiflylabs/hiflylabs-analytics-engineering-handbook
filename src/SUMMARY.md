@@ -23,3 +23,4 @@
         - [Python Models](./platforms/bigquery/bq_python.md)
     - [🚗 Redshift](./platforms/redshift/README.md)
     - [🧱 Databricks](./platforms/databricks/README.md)
+- [Contributing](./contribution.md)
