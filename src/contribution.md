@@ -3,7 +3,7 @@ This project uses [`mdBook`](https://github.com/rust-lang/mdBook) to create the 
 To install `mdBook` on your device please refer to this [installation guide](https://rust-lang.github.io/mdBook/guide/installation.html).
 
 
-Once mdBook is installed on your computer, you can navigate to the projects root folder and run
+Once mdBook is installed on your computer, you can navigate to the project's root folder and run
 
 ``` bash
 mdbook build --open
