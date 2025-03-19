@@ -8,3 +8,6 @@ This is a collection of standards and tips for practicing Analytics Engineering 
 
 
 The deployed Handbook is available [here](https://hiflylabs.github.io/hiflylabs-analytics-engineering-handbook), checkout the [Awesome dbt repository](https://github.com/Hiflylabs/awesome-dbt) for additional resources.
+
+## Contribute to this repo
+Have something to add? We'd love to hear it! Check out our contribution guide [here](./contribution.md).
