@@ -1,1 +1,0 @@
-# Stages and External Tables
