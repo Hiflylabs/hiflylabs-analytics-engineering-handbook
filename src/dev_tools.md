@@ -16,6 +16,7 @@ Make sure you check in the util readme if you need to configure IDE settings to 
 - [YAML](https://marketplace.visualstudio.com/items?itemName=redhat.vscode-yaml)
 - [Copy file name](https://marketplace.visualstudio.com/items?itemName=nemesv.copy-file-name)
 - [Code Spell Checker](https://marketplace.visualstudio.com/items?itemName=streetsidesoftware.code-spell-checker)
+- [Data Wrangler](https://marketplace.visualstudio.com/items?itemName=ms-toolsai.datawrangler)
 ### Specific configurations (to be added in the settings.json of VS Code)
 
 The following will remap Markdown, Yaml and SQL files to use the Jinja-flavoured interpreter:
